@@ -2,12 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+/*:root {*/
+/*  --foreground-rgb: 0, 0, 0;*/
+/*  --background-start-rgb: 214, 219, 220;*/
+/*  --background-end-rgb: 255, 255, 255;*/
+/*}*/
+
+.special-event {
+    position: relative;
+}
+.custom-popover .popover {
+    transform: none !important;
+}
+.fc-event-main, .fc-event-title, .fc-event-time {
+    font-size: 13px !important;
+}
+.special-event::before {
+    content: "*";
+    position: page;
+    top: -10px;
+    left: 1px;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: red;
+}
+.fc-rejected-event {
+    text-decoration: line-through red 1px solid !important;
+    /*color: red !important;*/
+    /*background-color: white !important;*/
+}
+/*.modal-backdrop {*/
+/*    background-color: rgba(255, 255, 255, 0) !important;*/
+/*}*/
+.custom-modal {
+    background-color: rgba(255, 255, 255, 0.6) !important;
 }
 
+.modal-hide-custom {
+    opacity: .3 !important;
+}
+
+.fc-today-button {
+    background-color: #F4F4F5 !important; /* Màu nền của nút Today */
+    color: black !important;
+    border: none !important;
+}
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 1em !important;
+    /* color: red; */
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+}
+.fc-daygrid-day-bg {
+    background-color: #F4F4F5 !important;
+}
+.fc-highlight-current-time {
+    background-color: red !important;
+}
+.fc .fc-timegrid-slot-minor {
+    border-top-style: none !important;
+}
+.fc-timegrid-slot {
+    border-color: #e5e7eb !important;
+}
+.popverStyle {
+    z-index: 99999 !important;
+}
+.inputModal {
+    background-color: transparent;
+    height: 30px;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -24,4 +88,93 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.react-calendar {
+    border-color: #e5e7eb !important;
+    border-radius: 8px !important;
+}
+
+.fc-prev-button, .fc-next-button, .fc-timeGridDay-button, .fc-timeGridWeek-button, .fc-dayGridMonth-button, .fc-listMonth-button {
+    background: none !important;
+    border: none !important;
+    color: #6b7280 !important;
+    border-radius: 10px !important;
+}
+
+.fc-timeGridDay-button.active, .fc-timeGridWeek-button.active, .fc-dayGridMonth-button.active, .fc-listMonth-button.active{
+    background: #e5e7eb !important;
+    font-weight: bold !important;
+}
+
+
+.fc-prev-button:hover, .fc-next-button:hover, .fc-today-button:hover {
+    background: #e5e7eb !important;
+}
+
+.fc-prev-button>span:before, .fc-next-button>span:before {
+    font-weight: bold !important;
+}
+
+.modal-content {
+    padding: 15px !important;
+    border: none !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px !important;
+}
+
+.input-new-calendar:focus {
+    box-shadow: none !important;
+}
+
+.react-datepicker-ignore-onclickoutside:focus-visible {
+    outline: none !important;
+}
+
+.react-datepicker-ignore-onclickoutside:hover {
+    background: #e5e7eb !important;
+}
+
+.react-datepicker-wrapper {
+    padding: 5px !important;
+}
+
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+
+.input-container.active {
+    margin-left: 10px;
+}
+
+.input-container .form-control {
+    width: 200px;
+}
+
+.c-modal {
+    z-index: 100000 !important;
+
+}
+
+.form-binh>input {
+    margin-top: 12px !important;
+    display: block !important;
+}
+.divider:before, .divider:after {
+    height: 0.1rem;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.account-name {
+    margin-left: auto;
 }
