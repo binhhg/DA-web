@@ -7,6 +7,7 @@ COPY . .
 
 ENV USER_URL="https://api.icalendar.click/user"
 ENV CALENDAR_URL="https://api.icalendar.click/calendar"
+ENV NEXTAUTH_URL="https://icalendar.click"
 RUN yarn build
 #RUN npm prune --production
 

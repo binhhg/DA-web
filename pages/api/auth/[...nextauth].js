@@ -48,4 +48,5 @@ export default NextAuth({
     }
   },
   secret: process.env.JWT_SECRET || '112customer#$!@!',
+  url: process.env.NEXTAUTH_URL || 'http://localhost:3000',
 })
