@@ -47,7 +47,5 @@ export default NextAuth({
       return true // Do different verification for other providers that don't have `email_verified`
     }
   },
-  theme: {
-    logo: 'https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg'
-  }
+  secret: process.env.JWT_SECRET || '112customer#$!@!',
 })

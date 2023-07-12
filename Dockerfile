@@ -4,6 +4,9 @@ COPY package.json .
 RUN yarn install --verbose
 COPY . .
 # COPY .env.local.dev .env.local
+
+ENV USER_URL="https://api.icalendar.click/user"
+ENV CALENDAR_URL="https://api.icalendar.click/calendar"
 RUN yarn build
 #RUN npm prune --production
 
