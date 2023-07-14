@@ -45,8 +45,11 @@ export default NextAuth({
         }
       }
       return true // Do different verification for other providers that don't have `email_verified`
+    },
+    async redirect({url,baseUrl}){
+      return 'http://localhost:3001'
     }
   },
   secret: process.env.JWT_SECRET || '112customer#$!@!',
-  url: process.env.NEXTAUTH_URL || 'http://localhost:3000',
+  url: process.env.NEXTAUTH_URL || 'http://localhost:3001',
 })
