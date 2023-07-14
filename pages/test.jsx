@@ -8,7 +8,6 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { toast } from 'react-toastify'
 
 export default function Test () {
-
   async function login (data) {
     try {
       const { token, user } = await AuthenApi.login(data)
@@ -24,9 +23,9 @@ export default function Test () {
           theme: 'colored',
         })
         console.log('login oke')
+        eventEmitter.emit('loggedIn', { token })
         localStorage.setItem('isLoggedIn', true)
         localStorage.setItem('token', token)
-        eventEmitter.emit('loggedIn', { token })
         return true
       } else {
         toast.error(`Đăng nhập thất bại, vui lòng thử lại`, {

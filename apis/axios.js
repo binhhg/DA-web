@@ -8,6 +8,8 @@ eventEmitter.on('loggedIn', data => {
   const { token: qq } = data
   if (qq) {
     token = qq
+    console.log('vao day r nee')
+    eventEmitter.emit('ok')
   } else {
     token = 'ssr'
   }
@@ -17,4 +19,9 @@ export const api = axios.create({
   headers: {
     'x-access-token': token || 'ssr'
   }
+})
+
+api.interceptors.request.use(config => {
+  config.headers['x-access-token'] = token || 'ssr'
+  return config
 })
