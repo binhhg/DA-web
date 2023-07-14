@@ -14,6 +14,9 @@ RUN yarn build
 
 FROM node:16-alpine
 WORKDIR /app
+ENV USER_URL="https://api.icalendar.click/user"
+ENV CALENDAR_URL="https://api.icalendar.click/calendar"
+ENV NEXTAUTH_URL="https://icalendar.click"
 COPY --from=BUILD_IMAGE /app/package.json ./package.json
 COPY --from=BUILD_IMAGE /app/node_modules ./node_modules
 COPY --from=BUILD_IMAGE /app/.next ./.next
