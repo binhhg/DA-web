@@ -1,5 +1,6 @@
 import { api } from '../axios'
 import * as querystring from 'query-string'
+import queryString from "querystring";
 import ApiConfig from '../config'
 
 export const CalendarApi = {
@@ -19,9 +20,9 @@ export const CalendarApi = {
       return null
     }
   },
-  async getEvent () {
+  async getEvent (query) {
     try {
-      const { data } = await api.get(`${ApiConfig.calendar}/event`)
+      const { data } = await api.get(`${ApiConfig.calendar}/event?${queryString.stringify(query)}`)
       return data
     } catch (e) {
       return null

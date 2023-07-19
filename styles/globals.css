@@ -11,6 +11,7 @@
 
 .special-event {
     position: relative;
+    width: 100%;
 }
 .custom-popover .popover {
     transform: none !important;
@@ -18,14 +19,14 @@
 .fc-event-main, .fc-event-title, .fc-event-time {
     font-size: 13px !important;
 }
-.special-event::before {
-    content: "*";
-    position: page;
-    top: -10px;
-    left: 1px;
+.special-event::after {
+    content: "⭐";
+    position: absolute;
+    top: 0px;
+    right: 1px;
     font-weight: bold;
-    font-size: 1.5em;
-    color: red;
+    font-size: 1em;
+    height: fit-content;
 }
 .fc-rejected-event {
     text-decoration: line-through red 1px solid !important;
