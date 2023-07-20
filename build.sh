@@ -1,1 +1,1 @@
-git pull && docker build . -t web
+git pull && docker build . -t calendar-web
