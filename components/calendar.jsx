@@ -43,7 +43,6 @@ const Calendar = forwardRef((props, ref) => {
             for (const va of aa) {
                 color[`${va.accountId}`] = va.color
             }
-            console.log(color)
             if (ref.current) {
                 const zz = ref.current.getApi()
                 zz.render()
@@ -84,17 +83,14 @@ const Calendar = forwardRef((props, ref) => {
         })
         eventEmitter.on('updateEvent', event => {
             const up = ref.current.getApi()
-            console.log('evv', event)
             for (const va of event) {
                 va.extendedProps = {...va}
                 va.id = va._id
                 if (va.up) {
-                    console.log('day neeee')
                     const a = up.getEventById(va.id)
                     a.remove()
                 }
             }
-            console.log('ua lo a', event)
             up.addEventSource(event)
         })
         eventEmitter.on('search', search => {
@@ -162,10 +158,8 @@ const Calendar = forwardRef((props, ref) => {
         const zz = await CalendarApi.updateLevel(data.id, {state: qq.state === 1 ? 2 : 1})
         qq.state = qq.state === 1 ? 2 : 1
         qq.extendedProps = {...qq}
-        console.log(qq)
         setShow(!show)
         c.remove()
-        console.log(qq)
         a.addEvent(qq)
     }
 
@@ -260,7 +254,6 @@ const Calendar = forwardRef((props, ref) => {
         )
     }
     const handleOkModalDelete = async () => {
-        console.log(checkDelete)
         try {
             if (!isRecurring) {
                 await CalendarApi.deleteEvent(data.id, {
@@ -291,7 +284,6 @@ const Calendar = forwardRef((props, ref) => {
                     rrule: data?.extendedProps?.rrule
                 })
                 if (zz && zz.length) {
-                    console.log(zz)
                     const ca = ref.current.getApi()
                     for (const va of zz) {
                         const ev = ca.getEventById(va.id)
@@ -312,7 +304,6 @@ const Calendar = forwardRef((props, ref) => {
             setShowDelete(!showDelete)
             setShow(!show)
         } catch (e) {
-            console.log(e)
             setShowDelete(!showDelete)
             setShow(!show)
         }
@@ -322,7 +313,6 @@ const Calendar = forwardRef((props, ref) => {
             return null
         }
 
-        console.log('dddd', data)
         return (
             <Modal
                 {...props}
@@ -397,7 +387,6 @@ const Calendar = forwardRef((props, ref) => {
 
     function eventClassNames(eventInfo) {
         const {event} = eventInfo
-        console.log(event)
         if (event.extendedProps.state === 2) return 'special-event'
     }
 
@@ -439,6 +428,12 @@ const Calendar = forwardRef((props, ref) => {
                             text: 'Tháng',
                             click: () => {
                                 ref.current.getApi().changeView('dayGridMonth')
+                            }
+                        },
+                        listMonth: {
+                            text: 'Lịch biểu',
+                            click: () => {
+                                ref.current.getApi().changeView('listMonth')
                             }
                         }
                     }
@@ -544,13 +539,11 @@ const Calendar = forwardRef((props, ref) => {
                 }}
                 eventClick={(info) => {
                     // return (<Popup target={info.el} />)
-                    console.log(info)
                     setShow(!show)
                     setData(info.event)
                     setCurrent(info)
                     // setTarget(info.el)
                     if (info.view.type === 'listMonth' || info.view.type === 'timeGridDay' || info.event?.extendedProps?.rrule) {
-                        console.log('vao day')
                         // setOffset([`${info.jsEvent.screenX}px`, `${info.jsEvent.screenY}px`])
                         setTarget(null)
                         if (info.event.allDay) {
@@ -570,6 +563,7 @@ const Calendar = forwardRef((props, ref) => {
                     const ll = cc?.booking?.accountId
                     const co = color[`${ll}`]
                     const vcd = co ? co : (colorInfo?.color || colorConfig?.defaultColor || color['default'])
+                    console.log(vcd)
                     if (info.view.type !== 'listMonth' && info.view.type !== 'dayGridMonth') {
                         info.el.style.backgroundColor = vcd
                         info.el.style.border = 'none'
