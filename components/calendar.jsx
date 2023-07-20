@@ -159,7 +159,8 @@ const Calendar = forwardRef((props, ref) => {
         const a = ref.current.getApi()
         const c = a.getEventById(data.id)
         const qq = {...data.extendedProps}
-        qq.state = qq.state === 1 ? 2 :1
+        const zz = await CalendarApi.updateLevel(data.id, {state: qq.state === 1 ? 2 : 1})
+        qq.state = qq.state === 1 ? 2 : 1
         qq.extendedProps = {...qq}
         console.log(qq)
         setShow(!show)

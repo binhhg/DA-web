@@ -20,6 +20,14 @@ export const CalendarApi = {
       return null
     }
   },
+  async updateLevel (id,body) {
+    try {
+      const { data } = await api.put(`${ApiConfig.calendar}/event/${id}/level`,body)
+      return data
+    } catch (e) {
+      return null
+    }
+  },
   async getEvent (query) {
     try {
       const { data } = await api.get(`${ApiConfig.calendar}/event?${queryString.stringify(query)}`)
