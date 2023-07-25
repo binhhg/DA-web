@@ -9,6 +9,8 @@ import ColorCard from '../components/colorCard'
 import { Dropdown } from 'react-bootstrap'
 import { UserApi } from '../apis/user'
 import { useRouter } from 'next/router'
+import {AuthenApi} from "../apis/authen";
+import {toast} from "react-toastify";
 
 export default function Lich () {
   const calen = useRef(null)
@@ -49,7 +51,23 @@ export default function Lich () {
     let calend = calen.current.getApi()
     calend.gotoDate(vc)
   }
-
+  async function handleLogout(){
+    await AuthenApi.logout()
+    localStorage.removeItem('token')
+    localStorage.removeItem('account')
+    localStorage.removeItem('isLoggedIn')
+    await router.push('/login')
+    toast.success(`Đăng xuất thành công`, {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: 'colored',
+    })
+  }
   eventEmitter.on('clickToday', () => {
     const today = new Date()
     setValue(today)
@@ -78,7 +96,7 @@ export default function Lich () {
             <Dropdown.Item onClick={() => {
               router.push('/profile')
             }}>Thông tin tài khoản</Dropdown.Item>
-            <Dropdown.Item >Đăng xuất</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Đăng xuất</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         {

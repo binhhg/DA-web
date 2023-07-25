@@ -11,6 +11,14 @@ export const AuthenApi = {
       return null
     }
   },
+  async logout () {
+    try {
+      const { data } = await api.post('/logout')
+      return data
+    } catch (e) {
+      return null
+    }
+  },
   async account (body) {
     try {
       const { data } = await api.post('/account', body)

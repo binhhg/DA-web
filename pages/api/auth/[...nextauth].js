@@ -35,6 +35,7 @@ export default NextAuth({
             },
             loginType: 1
           }
+          console.log('sao 2 lan nhi')
           // return `/test?sub=${profile.sub}&email=${profile.email}&name=${profile.name}&picture=${profile.picture}&loginType=1&refresh_token=${account.refresh_token}&scope=${account.scope}&provider=${account.provider}&providerAccountId=${account.providerAccountId}`
           return `/test?res=${encodeURI(JSON.stringify(obj))}`
           // return `/test?oke=${JSON.stringify(obj)}`

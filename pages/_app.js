@@ -14,7 +14,7 @@ export default function App ({ Component, pageProps }) {
       const path = router.pathname
       if (!token && ( path !== '/login' && path !== '/test')) {
         router.push('/login')
-      } else if (token && path === '/login') {
+      } else if (token && (path === '/login' || path === '/')) {
         router.push('/lich')
       }
     })()

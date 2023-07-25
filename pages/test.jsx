@@ -12,6 +12,7 @@ export default function Test () {
     try {
       const { token, user } = await AuthenApi.login(data)
       if (token) {
+        console.log('day nee')
         toast.success(`Bạn đã đăng nhập thành công với tài khoản: ${user.name || ''}`, {
           position: 'top-center',
           autoClose: 2000,
