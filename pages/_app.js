@@ -12,7 +12,7 @@ export default function App ({ Component, pageProps }) {
     (async () => {
       const token = localStorage.getItem('token')
       const path = router.pathname
-      if (!token && ( path !== '/login' && path !== '/test')) {
+      if (!token && ( path !== '/login' && path !== '/test' && path !== '/terms')) {
         router.push('/login')
       } else if (token && (path === '/login' || path === '/')) {
         router.push('/lich')
