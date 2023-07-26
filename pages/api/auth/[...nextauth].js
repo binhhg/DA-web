@@ -8,7 +8,7 @@ export default NextAuth({
       clientSecret: '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',
       authorization: {
         params: {
-          scope: 'email profile https://www.googleapis.com/auth/calendar',
+          scope: 'email profile https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/admin.reports.audit.readonly',
           prompt: 'consent',
           access_type: 'offline',
           response_type: 'code'
