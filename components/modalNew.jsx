@@ -755,6 +755,7 @@ export default function ModalNew ({ show, handle }) {
         en = moment(en).format('YYYY-MM-DD')
       }
       const dd = {}
+      dd.state = data.extendedProps.state || 1
       dd.title = title
       dd.location = location
       dd.description = description
