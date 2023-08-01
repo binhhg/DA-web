@@ -84,7 +84,7 @@ export default function ColorCard({colorConfig, setColorConfig}) {
                     (accounts || []).map(item => {
                         return (
                             <div className={'flex gap-2 items-center mt-2'} key={item._id}>
-                                <div className={`w-[40px] h-[40px] rounded-md cursor-pointer`}
+                                <div className={`w-[40px] h-[40px] rounded-md cursor-pointer shrink-0`}
                                      style={{backgroundColor: item.color}} onClick={() => showColorPicker(item)}>
                                 </div>
                                 {
@@ -94,7 +94,7 @@ export default function ColorCard({colorConfig, setColorConfig}) {
                                             <TwitterPicker onChange={(val) => onChangeColor(item, val)}/>
                                         </div> : <></>
                                 }
-                                <span>{item.email}</span>
+                                <span className={'whitespace-nowrap text-ellipsis overflow-hidden'}>{item.email}</span>
                             </div>
                         )
                     })

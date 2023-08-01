@@ -275,6 +275,7 @@ const Calendar = forwardRef((props, ref) => {
                 }
                 const {data: zz} = await CalendarApi.deleteEvent(data.id, {
                     start: st,
+                    allDay: data.allDay,
                     end: en,
                     type: 2,
                     delete: checkDelete,
