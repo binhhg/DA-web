@@ -167,6 +167,7 @@ const PersonalDetail = () => {
                                         </div>
                                         {
                                            accounts.length !== 1 &&  <div className={'cursor-pointer mr-3'} onClick={() => {
+                                               console.log('ua alo')
                                                 setData(account)
                                                 setShowPopover(true)
                                             }}>
