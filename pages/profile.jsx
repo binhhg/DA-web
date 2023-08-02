@@ -52,8 +52,8 @@ const PersonalDetail = () => {
         })
     }, [])
     const handleOkModalCheck = async () => {
-        const cc = accounts.filter(va => va._id !== data._id)
         try {
+            console.log('data ne', data)
             const {data} = await AuthenApi.deleteAccount(data._id)
             console.log(data)
             if(data.ok){   toast.success(`Xóa tài khoản thành công`, {
@@ -66,6 +66,7 @@ const PersonalDetail = () => {
                 progress: undefined,
                 theme: 'colored',
             })
+                const cc = accounts.filter(va => va._id !== data._id)
                 setAccounts(cc)
                 setShowPopover(!showPopover)
             } else {
