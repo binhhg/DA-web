@@ -143,13 +143,13 @@ export default function Test () {
           if (check) {
             return router.push('/lich')
           }
-          return router.push('/home')
+          return router.push('/login')
         } else {
           const check = await accessAccount(zz)
           if (check) {
             return router.push('/lich')
           }
-          return router.push('/home')
+          return router.push('/login')
         }
       })()
     }

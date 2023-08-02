@@ -7,7 +7,10 @@ import {UserApi} from '../apis/user'
 import eventEmitter from '../utils/eventEmitter'
 import {signIn} from 'next-auth/react'
 import {Button, Modal} from "react-bootstrap";
-
+import {AuthenApi} from "../apis/authen";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { toast } from 'react-toastify'
 const menu = [
     {
         id: 1,
@@ -48,10 +51,51 @@ const PersonalDetail = () => {
             })
         })
     }, [])
-    const handleOkModalCheck = () => {
+    const handleOkModalCheck = async () => {
         const cc = accounts.filter(va => va._id !== data._id)
-        setAccounts(cc)
-        setShowPopover(!showPopover)
+        try {
+            const {data} = await AuthenApi.deleteAccount(data._id)
+            console.log(data)
+            if(data.ok){   toast.success(`Xóa tài khoản thành công`, {
+                position: 'top-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: 'colored',
+            })
+                setAccounts(cc)
+                setShowPopover(!showPopover)
+            } else {
+                toast.error(`Xóa tài khoản thất bại, vui lòng thử lại`, {
+                    position: 'top-center',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                    theme: 'colored',
+                })
+                setShowPopover(!showPopover)
+            }
+
+        } catch (e) {
+            toast.error(`Xóa tài khoản thất bại, vui lòng thử lại`, {
+                position: 'top-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: 'colored',
+            })
+            setShowPopover(!showPopover)
+        }
+
     }
     const ShowCheck = (props) => {
         if (!showPopover) {

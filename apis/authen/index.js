@@ -26,5 +26,13 @@ export const AuthenApi = {
     } catch (e) {
       return null
     }
+  },
+  async deleteAccount (id) {
+    try {
+      const { data } = await api.delete(`/account/${id}`)
+      return data
+    } catch (e) {
+      return null
+    }
   }
 }
