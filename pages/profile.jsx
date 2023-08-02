@@ -54,7 +54,7 @@ const PersonalDetail = () => {
     const handleOkModalCheck = async () => {
         try {
             console.log('data ne')
-            const {data: dd} = await AuthenApi.deleteAccount(data._id)
+            const dd = await AuthenApi.deleteAccount(data._id)
             console.log(dd)
             if(dd.ok){   toast.success(`Xóa tài khoản thành công`, {
                 position: 'top-center',
