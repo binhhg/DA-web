@@ -562,6 +562,7 @@ const Calendar = forwardRef((props, ref) => {
                     // ReactDOM.render((<ShowPopover target={info.el} />), info.el)
                 }}
                 eventDidMount={(info) => {
+                    console.log('sao k co color con fig', colorConfig)
                     const {extendedProps: cc} = info.event
                     console.log('cc ne', cc)
                     const colorInfo = (colorConfig?.accountColor || []).find(item => item.accountId === cc?.booking?.accountId)
@@ -569,7 +570,7 @@ const Calendar = forwardRef((props, ref) => {
                     const ll = cc?.booking?.accountId
                     const co = color[`${ll}`]
                     // const vcd = co ? co : (colorInfo?.color || colorConfig?.defaultColor || color['default'])
-                    const vcd = colorInfo ? colorInfo.color : colorConfig.defaultColor
+                    const vcd = colorInfo ? colorInfo.color : colorConfig?.defaultColor || color.default
                     console.log(vcd)
                     if (info.view.type !== 'listMonth' && info.view.type !== 'dayGridMonth') {
                         info.el.style.backgroundColor = vcd
