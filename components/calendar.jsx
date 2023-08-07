@@ -19,9 +19,11 @@ import {faStar as faStarOutline} from "@fortawesome/free-regular-svg-icons";
 
 const moment = require('moment')
 const Calendar = forwardRef((props, ref) => {
+
     const [isClient, setIsClient] = useState(false)
     const [events, setEvents] = useState([])
     const {showModal, colorConfig} = props
+    console.log('props config', colorConfig)
 
     const [show, setShow] = useState(false)
     const [target, setTarget] = useState(null)
