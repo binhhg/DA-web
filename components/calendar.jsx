@@ -398,7 +398,7 @@ const Calendar = forwardRef((props, ref) => {
 
     return (
         <Fragment>
-            {isClient && <FullCalendar
+            {isClient && colorConfig.defaultColor && <FullCalendar
                 plugins={[rrulePlugin, bootstrap5Plugin, dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
                 themeSystem={'bootstrap5'}
                 initialView={'timeGridWeek'}
