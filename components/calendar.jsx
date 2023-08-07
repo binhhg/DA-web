@@ -36,6 +36,7 @@ const Calendar = forwardRef((props, ref) => {
     }
 
     useEffect(() => {
+        console.log('ua alo lo')
         if (colorConfig && Object.keys(colorConfig).length > 0) {
             color.default = colorConfig.defaultColor
 
@@ -44,12 +45,14 @@ const Calendar = forwardRef((props, ref) => {
                 color[`${va.accountId}`] = va.color
             }
             if (ref.current) {
+                console.log('vao day')
                 const zz = ref.current.getApi()
                 zz.render()
                 return () => {
                     zz.destroy()
                 }
             }
+            console.log('colorr ', color)
         }
     }, [])
     const getData = async (query) => {
@@ -560,10 +563,13 @@ const Calendar = forwardRef((props, ref) => {
                 }}
                 eventDidMount={(info) => {
                     const {extendedProps: cc} = info.event
+                    console.log('cc ne', cc)
                     const colorInfo = (colorConfig?.accountColor || []).find(item => item.accountId === cc?.booking?.accountId)
+                    console.log('colorinfo ', colorInfo)
                     const ll = cc?.booking?.accountId
                     const co = color[`${ll}`]
-                    const vcd = co ? co : (colorInfo?.color || colorConfig?.defaultColor || color['default'])
+                    // const vcd = co ? co : (colorInfo?.color || colorConfig?.defaultColor || color['default'])
+                    const vcd = colorInfo ? colorInfo.color : colorConfig.defaultColor
                     console.log(vcd)
                     if (info.view.type !== 'listMonth' && info.view.type !== 'dayGridMonth') {
                         info.el.style.backgroundColor = vcd
