@@ -51,7 +51,7 @@ const Calendar = forwardRef((props, ref) => {
                 }
             }
         }
-    }, [colorConfig])
+    }, [])
     const getData = async (query) => {
         try {
             const zz = await CalendarApi.getEvent(query)

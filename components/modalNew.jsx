@@ -825,8 +825,7 @@ export default function ModalNew ({ show, handle }) {
                   {optionSelected === initOptionSelected && <Form.Check type="radio"
                                                                         label={'Chỉ sự kiện này'}
                                                                         value={1}
-                                                                        id={'50'}
-                                                                        name={'group1'}
+                                                                        name={'check1'}
                                                                         checked={checkEdit === 1}
                     // onChange={() => {
                     //   console.log('vao day 1')
@@ -836,8 +835,7 @@ export default function ModalNew ({ show, handle }) {
                   <Form.Check type="radio"
                               label={'Sự kiện này và các sự kiện về sau'}
                               value={2}
-                              id={'51'}
-                              name={'group1'}
+                              name={'check1'}
                               checked={checkEdit === 2}
                     // onChange={(ev) => {
                     //   console.log('vao day 2')
@@ -847,8 +845,7 @@ export default function ModalNew ({ show, handle }) {
                   <Form.Check type="radio"
                               label={'Tất cả sự kiện'}
                               value={3}
-                              id={'52'}
-                              name={'group1'}
+                              name={'check1'}
                               checked={checkEdit === 3}
                     // onChange={() => setCheckEdit(3)}
                               className={'mb-3'}
@@ -909,6 +906,7 @@ export default function ModalNew ({ show, handle }) {
                 {(Object.values(thuConfig)).map(va => {
                   return (
                     <ToggleButton id={va.id}
+                                  key={va.id}
                                   variant={repeatDay.includes(va.id) ? 'primary' : 'light'}
                                   value={va.id}>{va.symbol}
 

@@ -88,8 +88,8 @@ export default function Lich () {
         <Dropdown className={'mb-3'}>
           <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
             <div></div>
-            <div className={'w-[36px] h-[36px] rounded-lg bg-gray-100 flex justify-center items-center'}><i
-              className={'bi bi-plus text-lg'}></i></div>
+            {/*<div className={'w-[36px] h-[36px] rounded-lg bg-gray-100 flex justify-center items-center'}><i*/}
+            {/*  className={'bi bi-plus text-lg'}></i></div>*/}
           </Dropdown.Toggle>
 
           <Dropdown.Menu className={'!border-none'} style={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px;' }}>
