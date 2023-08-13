@@ -223,7 +223,7 @@ const Calendar = forwardRef((props, ref) => {
                         {data?.extendedProps?.location &&
                             <div><i className="bi bi-geo-alt text-lg mr-3"></i> {data.location || ''}</div>}
                         {data?.extendedProps?.description &&
-                            <div><i className="bi bi-text-paragraph text-lg mr-3"></i> aaaaa</div>}
+                            <div><i className="bi bi-text-paragraph text-lg mr-3"></i> {data.description || ''}</div>}
                         {data?.extendedProps?.booking?.hangoutLink && (
                             <>
                                 <div className={'flex gap-3 items-center pt-2'}>
