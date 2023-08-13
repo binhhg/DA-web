@@ -221,7 +221,7 @@ const Calendar = forwardRef((props, ref) => {
                         <div
                             className={'mb-2 ml-9 text-gray-500'}>{rruleToText(data.start, data.end, data?.extendedProps?.rrule)}</div>
                         {data?.extendedProps?.location &&
-                            <div><i className="bi bi-geo-alt text-lg mr-3"></i> heeelo</div>}
+                            <div><i className="bi bi-geo-alt text-lg mr-3"></i> {data.location || ''}</div>}
                         {data?.extendedProps?.description &&
                             <div><i className="bi bi-text-paragraph text-lg mr-3"></i> aaaaa</div>}
                         {data?.extendedProps?.booking?.hangoutLink && (
