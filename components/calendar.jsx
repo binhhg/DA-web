@@ -587,6 +587,12 @@ const Calendar = forwardRef((props, ref) => {
                             dotEl1.style.borderColor = vcd
                         }
                     }
+                    if(info.view.type === 'dayGridMonth'){
+                        if(info.event.allDay){
+                            info.el.style.backgroundColor = vcd
+                            info.el.style.border = 'none'
+                        }
+                    }
                 }
                 }
             />
