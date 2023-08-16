@@ -68,10 +68,15 @@ export default function Lich () {
       theme: 'colored',
     })
   }
-  eventEmitter.on('clickToday', () => {
-    const today = new Date()
-    setValue(today)
-  })
+ useEffect(() => {
+   eventEmitter.on('clickToday', () => {
+     const today = new Date()
+     setValue(today)
+   })
+   eventEmitter.on('searchTitle', value =>{
+     onChange(value)
+   } )
+ },[])
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <div className={'flex items-center justify-between gap-1 cursor-pointer'}>

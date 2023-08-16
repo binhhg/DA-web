@@ -64,6 +64,7 @@ const Calendar = forwardRef((props, ref) => {
                 va.id = va._id
                 va.extendedProps = {...va}
             }
+            eventEmitter.emit('dataSearch',zz)
             setEvents(zz)
         } catch (e) {
             setEvents([])

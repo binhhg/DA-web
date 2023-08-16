@@ -1,21 +1,29 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {TwitterPicker} from 'react-color'
 import {ColorConfig} from '../apis/colorConfig'
 import {RadioGroup, Radio} from 'react-radio-group'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import eventEmitter from "../utils/eventEmitter";
+import {Form} from "react-bootstrap";
 
 export default function ColorCard({colorConfig, setColorConfig}) {
     const [accounts, setAccounts] = useState([])
     const [selected, setSelected] = useState("1")
-    async function handleSelected(value){
-        setSelected(value)
-        const qq = {
+    const [dataSearch, setDataSearch] = useState([])
+    const [data, setData] = useState(null)
 
-        }
-        if(+value === 2) qq.level = 2
-        eventEmitter.emit('search',qq)
+    async function handleSelected(value) {
+        setSelected(value)
+        const qq = {}
+        if (+value === 2) qq.level = 2
+        eventEmitter.emit('search', qq)
     }
+
+    useEffect(() => {
+        eventEmitter.on('dataSearch', da => {
+            setData(da)
+        })
+    }, [])
     useEffect(() => {
         const arr = (colorConfig?.accountColor || []).map(item => {
             return {
@@ -75,7 +83,21 @@ export default function ColorCard({colorConfig, setColorConfig}) {
         bottom: '0px',
         left: '0px',
     }
-
+    const search = (e) => {
+        const text = e.target.value
+        if(text === ''){
+            setDataSearch([])
+            return
+        }
+        const ok = data.filter(value => {
+            return value.title.includes(text)
+        })
+        setDataSearch(ok)
+    }
+    const searchTitle = (value) => {
+        console.log(value)
+        eventEmitter.emit('searchTitle', value.start)
+    }
     return (
         <>
             <div className={'py-3'}>
@@ -110,6 +132,26 @@ export default function ColorCard({colorConfig, setColorConfig}) {
                         <Radio className={'w-[20px]'} value="2"/>Quan trọng
                     </div>
                 </RadioGroup>
+            </div>
+            <div className={'py-3'}>
+                <Form.Group controlId="formInput">
+                    <Form.Control
+                        className={'input-new-calendar'}
+                        type="text" placeholder="tìm kiếm"
+                        style={{border: 'none', borderBottom: '2px solid blue', borderRadius: '0px'}}
+                        onChange={(e) => search(e)}
+                    />
+                    <div className={' h-[165px] px-3 py-3 overflow-y-auto overflow-x-hidden'}>
+                        {(dataSearch || []).map(item => {
+                            return (
+                                <div key={item._id} onClick={() => searchTitle(item)}>
+                                    {item.title}
+                                </div>
+                            )
+                        })}
+                    </div>
+
+                </Form.Group>
             </div>
         </>
     )
